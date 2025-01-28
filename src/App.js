@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import './App.css';
 import { FormularioPregunta } from './components/FormularioPregunta';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +8,7 @@ import { PreguntasCreadas } from './components/PreguntasCreadas';
 
 
 let idActualPregunta = 1
+export const preguntasContext = createContext([])
 
 function App() {
   const [preguntas, setPreguntas] = useState([]);
@@ -17,10 +18,12 @@ function App() {
     setPreguntas([...preguntas, nueva])
   }
   return (
-    <div className="App p-5">
-      <FormularioPregunta aniadePregunta={addQuestion}/>
-      <PreguntasCreadas preguntas={preguntas}/>
-    </div>
+    <preguntasContext.Provider value={{preguntas, setPreguntas, addQuestion}}>
+      <div className="App p-5">
+        <FormularioPregunta/>
+        <PreguntasCreadas/>
+      </div>
+    </preguntasContext.Provider>
   );
 }
 

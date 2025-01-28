@@ -1,7 +1,11 @@
 import { React, useState } from 'react'
 import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { preguntasContext } from '../App';
 
-export const FormularioPregunta = ({ aniadePregunta }) => {
+export const FormularioPregunta = () => {
+
+  const {addQuestion} = useContext(preguntasContext)
 
   const [pregunta, setPregunta] = useState({
 
@@ -27,7 +31,7 @@ export const FormularioPregunta = ({ aniadePregunta }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    aniadePregunta({
+    addQuestion({
       ...pregunta
     })
 

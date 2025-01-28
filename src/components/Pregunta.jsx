@@ -1,9 +1,14 @@
-import React from 'react'
+import {React, useContext} from 'react'
+import { preguntasContext } from '../App'
 
 export const Pregunta = ({pregunta}) => {
+
+    const {preguntas, setPreguntas} = useContext(preguntasContext)
+
     const borrarPregunta = (e) =>{
         let divPregunta = e.target.parentElement
         divPregunta.remove()
+        setPreguntas(preguntas.filter(p => p.id !== pregunta.id))
     }
     return (
         <div className="card" style={{ width: "18rem" }} >

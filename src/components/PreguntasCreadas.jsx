@@ -1,8 +1,10 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import { Pregunta } from './Pregunta'
+import { preguntasContext } from '../App'
 
-export const PreguntasCreadas = ({preguntas}) => {
+export const PreguntasCreadas = () => {
 
+    const {preguntas} = useContext(preguntasContext)
 
     return (
        
