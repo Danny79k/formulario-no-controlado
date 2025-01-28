@@ -4,13 +4,13 @@ import './App.css';
 import { FormularioPregunta } from './components/FormularioPregunta';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Swal from 'sweetalert2';
+import { PreguntasCreadas } from './components/PreguntasCreadas';
 
 
+let idActualPregunta = 1
 
 function App() {
   const [preguntas, setPreguntas] = useState([]);
-  let idActualPregunta = 0
   const addQuestion = (nueva) => {
     nueva.id = idActualPregunta;
     idActualPregunta++
@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App p-5">
       <FormularioPregunta aniadePregunta={addQuestion}/>
+      <PreguntasCreadas preguntas={preguntas}/>
     </div>
   );
 }
