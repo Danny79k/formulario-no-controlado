@@ -1,17 +1,17 @@
 import {React, useContext} from 'react'
 import { Pregunta } from './Pregunta'
-import { preguntasContext } from '../App'
+import { preguntasContext } from '../provider/QuestionProvider'
 
 export const PreguntasCreadas = () => {
 
-    const {preguntas} = useContext(preguntasContext)
+    const {state} = useContext(preguntasContext)
 
     return (
        
         <div className='grid'>
             <div className="list-group">
             {
-                preguntas.map( p => {
+                state.preguntas.map( p => {
                     return (<div className='col-3'><Pregunta key={p.id} pregunta={p}/></div>)
                 })
             }

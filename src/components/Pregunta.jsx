@@ -1,14 +1,14 @@
 import {React, useContext} from 'react'
-import { preguntasContext } from '../App'
+import { preguntasContext } from '../provider/QuestionProvider'
 
 export const Pregunta = ({pregunta}) => {
 
-    const {preguntas, setPreguntas} = useContext(preguntasContext)
+    const {dispatch} = useContext(preguntasContext)
 
     const borrarPregunta = (e) =>{
         let divPregunta = e.target.parentElement
         divPregunta.remove()
-        setPreguntas(preguntas.filter(p => p.id !== pregunta.id))
+        dispatch({type: "DELETE_QUESTION", payload: pregunta.id})
     }
     return (
         <div className="card" style={{ width: "18rem" }} >

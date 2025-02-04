@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
-import { preguntasContext } from '../App';
+import { preguntasContext } from '../provider/QuestionProvider'
 
 export const FormularioPregunta = () => {
 
